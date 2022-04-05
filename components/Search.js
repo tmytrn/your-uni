@@ -13,9 +13,6 @@ const Search = ({ data }) => {
   const handleChange = (e) => {
     setSearchField(e.target.value);
   };
-  function searchList() {
-    return <SearchList filteredUnis={filteredUnis} />;
-  }
   return (
     <div className={styles.uni_section}>
       <input
@@ -23,7 +20,10 @@ const Search = ({ data }) => {
         className={styles.search}
         placeholder={"Search..."}
       ></input>
-      <div className={styles.grid}> {searchList()}</div>
+      <div className={styles.grid}>
+        {" "}
+        <SearchList filteredUnis={filteredUnis} />
+      </div>
     </div>
   );
 };

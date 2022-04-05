@@ -16,12 +16,28 @@ export async function getStaticProps(context) {
     const items = data[i].split(",");
     let uniObj = {};
     for (let j = 0; j < items.length; j++) {
-      uniObj[dataLabels[j]] = items[j];
+      //check if its the URL
+      if (j === items.length - 1) {
+        //clean the URL string
+        uniObj[dataLabels[j]] = cleanUrl(items[j]);
+      } else {
+        uniObj[dataLabels[j]] = items[j];
+      }
     }
     uniArray.push(uniObj);
   }
-  return { props: { uniArray } };
+  return { props: { uniArray }, revalidate: 120 };
 }
+
+const cleanUrl = (url) => {
+  let result = url.replace(/(^\w+:|^)\/\//, "");
+  result = result.toLowerCase().replace("www.", "");
+  if (result.length > 24) {
+    return result.substring(0, 24) + "...";
+  } else {
+    return result;
+  }
+};
 
 export default function Home({ uniArray }) {
   return (

@@ -8,6 +8,12 @@
   }
   @media only screen and (min-width: 600px) {
     margin: {
+      left: $gutter_tablet;
+      right: $gutter_tablet;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    margin: {
       left: $gutter_desktop;
       right: $gutter_desktop;
     }
@@ -154,6 +160,11 @@
     color: #e16259;
   }
   @media only screen and (min-width: 600px) {
+    width: calc(50% - 24px);
+    margin-right: 24px;
+    margin-bottom: 24px;
+  }
+  @media only screen and (min-width: 1200px) {
     width: calc(25% - 24px);
     margin-right: 24px;
     margin-bottom: 48px;
